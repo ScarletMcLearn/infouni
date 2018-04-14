@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Sign In</title>
+<title>Sign Up</title>
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -31,39 +31,48 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<div class=" agile-welcome">
 			<div class="text-w3">
 				<h4>welcome to our university finder</h4>
-				<p>Sign In to join the biggest online education communtiy</p>
+				<p>Sign Up to join the biggest online education communtiy</p>
             </div>
                 
 			<div class="clearfix"></div>
 		</div>
          <div class="agile-contact">
 		<div class="map1">
-				<input placeholder="Username/E-mail" name="Name" class="name" type="text" required="" id="email"><br>
-				<input placeholder="Password" name="Name" class="name" type="password" required="" id="pass"><br>
+			
+				<input placeholder="First Name" name="Name" class="name" type="text" id="first_name" required=""><br>
+				<input placeholder="Last Name" name="Name" class="name" type="text" id="last_name" required="" ><br>
+                <input placeholder="E-mail" name="Name" class="name" type="text" id="email" required=""><br>
+				<input placeholder="Username" name="Name" class="name" type="text" id="username" required="" ><br>
+                <input placeholder="Password" name="Name" class="name" type="password" id="pass" required=""><br>
+				<input placeholder="University Name(optional)" name="Name" class="name" id="uni_name" type="text"><br>
 				<button id="submit">Submit </button>
-				 <script src="/vendor/ejs_production.js"></script>
-				  <script>
-				  var user = {};
-				    $("#email").change(function(event){
-				      user.email=$("#email").val();
-				    });
-				    $("#pass").change(function(event){
-				      user.password=$("#pass").val();
-				    });
-				    $("#submit").click(function(event){
-				      $.ajax({
-				        method: 'POST',
-				        url: "/auth/signin",
-				        data: user
-				      }).done(function(response){
-				        console.log(response);
-				        window.location.replace('/');
-				      }).fail(function(response){
-				        console.log(response);
-				       alert("User name or Password Incorrect!");
-				      });
-				    });
-				  </script>	
+				
+				<script type='text/javascript'>
+				
+					var newUser={firstName:"",lastName:"",email:"",username:"",password:"",uniName:""};
+					$('#submit').click(function(){
+						newUser.firstName=$('#first_name').val();
+						newUser.lastName=$('#last_name').val();
+						newUser.email=$('#email').val();
+						newUser.password=$('#pass').val();
+						newUser.username=$('#username').val();
+						newUser.uniName=$('#uni_name').val();
+						 $.ajax({
+		                    method: "POST",
+		                    url: "/auth/signup",
+		                    data: newUser
+		                }).done(function(response){
+		                    console.log(response);
+		                    alert("Signed Up succesfully!");
+		                    window.location.replace('/');
+		                }).fail(function(response){
+		                    alert(response.responseText);
+		                });
+						
+						
+						
+					});
+				</script>
 		
 		</div>
 	</div>

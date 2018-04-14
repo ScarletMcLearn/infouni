@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Add University Info</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Education Hub Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<!-- //css files -->
+<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&subset=latin-ext,vietnamese" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSource+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+</head>
+<body>
+<!--welcome-->
+<div class="signup">
+	<div class="container">
+		<div class=" agile-welcome">
+			<div class="text-w3">
+				<h4>Let the World know about your University!</h4>
+				<p>Fill up the form below to give us information about you information</p>
+            </div>
+                
+			<div class="clearfix"></div>
+		</div>
+         <div class="agile-contact">
+		<div class="map1">
+			
+				<input placeholder="University Name" name="Name" class="name" type="text" id="uni_name" required=""><br>
+				<input placeholder="Location" name="Name" class="name" type="text" id="location" required="" ><br>
+                <input placeholder="No. of students" name="Name" class="name" type="text" id="st_no" ><br>
+			    <p><b>Does Your university offer post-doc programme? </b></p>
+
+			        <label class="radio">
+			          <input type="radio" name="post_doc" id="inlineRadio1" value="Yes"> Yes
+			        </label>
+			        <label class="radio">
+			          <input type="radio" name="post_doc" id="inlineRadio2" value="No"> No
+			        </label>
+		
+		      <br>
+		       <p><b>Does Your university offer Scholarship in available programme? </b></p>
+			    
+		        
+			        <label class="radio">
+			          <input type="radio" name="schol" id="inlineRadio1" value="Yes"> Yes
+			        </label>
+			        <label class="radio">
+			          <input type="radio" name="schol" id="inlineRadio2" value="No"> No
+			        </label>
+			  
+		      <br>
+		      <input placeholder="Maximum Amount of waiver/scholarship provided by the university" name="Name" class="name" type="text" id="am" ><br>
+		      
+				<button id="submit">Submit </button>
+				
+				<script type='text/javascript'>
+				
+					var newUniversity={name:"",loc:"",no_st:"",scholarship:"",amount:"",phd:""};
+					$('#submit').click(function(){
+						newUniversity.name=$('#uni_name').val();
+						newUniversity.loc =$('#location').val();
+						newUniversity.no_st=$('#st_no').val();
+					    
+						newUniversity.phd=document.querySelector('input[name="post_doc"]:checked').value;
+						newUniversity.scholarship=document.querySelector('input[name="schol"]:checked').value;
+						newUniversity.amount=$('#am').val();
+						 $.ajax({
+		                    method: "POST",
+		                    url: "/api/universities",
+		                    data: newUniversity
+		                }).done(function(response){
+		                    console.log(response);
+		                    alert("University Info Added successfully!");
+		                    window.location.replace('/');
+		                }).fail(function(response){
+		                    alert(response.responseText);
+		                });
+						
+						
+						
+					});
+				</script>
+		
+		</div>
+	</div>
+	</div>
+    
+</div>
+<!--//welcome-->
+
+
+</body>
+</html>

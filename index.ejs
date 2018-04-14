@@ -1,28 +1,412 @@
-<!DOCTYPE html5>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Hello!</title>
-    <!-- General META -->
-    <meta charset="utf-8">
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  </head>
-  <body>
-    <h2>Hello!</h2>
-    <button id="test">Show all articles</button>
-    <div id="list"></div>
-  </body>
-  <script src="lib/jquery/dist/jquery.min.js"></script>
-  <script src="vendor/ejs_production.js"></script>
-  <script>
-  $("#test").click(function(){
-    $.get("/api/articles", function(data, status){
-      var html = new EJS({url: 'views/article/list.ejs'}).render({articles:data});
-    $("#list").html(html);
-    });
-  });
-  </script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Find Your Next University!</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Education Hub Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<!-- //css files -->
+<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&subset=latin-ext,vietnamese" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSource+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+
+		<script src="js/jquery.chocolat.js"></script>
+		<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen">
+		<!--light-box-files -->
+		<script>
+		$(function() {
+			$('.gallery-grid a').Chocolat();
+		});
+		</script>
+
+<!-- //js -->
+<script src="js/responsiveslides.min.js"></script>
+		<script>
+				$(function () {
+					$("#slider").responsiveSlides({
+						auto: true,
+						pager:false,
+						nav: true,
+						speed: 1000,
+						namespace: "callbacks",
+						before: function () {
+							$('.events').append("<li>before event fired.</li>");
+						},
+						after: function () {
+							$('.events').append("<li>after event fired.</li>");
+						}
+					});
+				});
+			</script>
+			
+
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+
+
+
+</head>
+<body>
+<div class="header" id="home">
+	<div class="logo">
+		<a href="#"><h1>University Finder</h1></a>
+	</div>
+<!-- navigation -->
+		<div class="ban-top-con">
+			<div class="top_nav_left">
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav menu__list">
+						<li class="active menu__item menu__item--current"><a class="menu__link" href="index.ejs" id="home">Home <span class="sr-only">(current)</span></a></li>
+						<li class=" menu__item"><a class="menu__link scroll" href="#about">About us</a></li>
+						<li class=" menu__item"><a class="menu__link scroll" href="#ranking">Ranking</a></li>
+						<li class=" menu__item"><a class="menu__link scroll" href="/signin" id="sign_in_list">Sign In</a></li>
+							<script type='text/javascript'>
+							$('#sign_in_list').click(function(){
+							  	window.close();
+							  	window.open('/signin');
+							  	
+							    
+							});
+						</script>
+						<li class=" menu__item"><a class="menu__link scroll" href="/signup"  id='sign_up_list'>Sign Up</a></li>
+						<script type='text/javascript'>
+							$('#sign_up_list').click(function(){
+								window.close();
+							  	window.open('/signup');
+							  
+							});
+						</script>
+						<li class=" menu__item"><a class="menu__link scroll" href="#contact">contact</a></li>
+					  </ul>
+					</div>
+				  </div>
+				</nav>	
+				
+			</div>
+			<div class="clearfix"></div>
+			</div>
+	<!-- //navigation -->
+<!-- Slider -->
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider">
+					<li>
+						<div class="slider-img">
+							<img src="images/bg2.jpg" class="img-responsive" alt="education">
+						</div>
+						<div class="slider-info">
+							<h3>Education</h3>
+							<p>Education is the most powerful weapon which you can use to change the world.</p>
+						</div>
+					</li>
+					<li>
+						<div class="slider-img">
+							<img src="images/bg3.jpg" class="img-responsive" alt="education">
+						</div>
+						<div class="slider-info">
+							<h3>Education</h3>
+							<p>The purpose of education is to replace an empty mind with an open one.</p>
+						</div>
+					</li>
+					<li>
+						<div class="slider-img">
+							<img src="images/bg1.jpg" class="img-responsive" alt="education">
+						</div>
+						<div class="slider-info">
+							<h3>Education</h3>
+							<p>Education is the most powerful weapon which you can use to change the world.</p>
+						</div>
+					</li>
+					<li>
+						<div class="slider-img">
+							<img src="images/bg4.jpg" class="img-responsive" alt="education">
+						</div>
+						<div class="slider-info">
+							<h3>Education</h3>
+							<p>The purpose of education is to replace an empty mind with an open one.</p>
+						</div>
+					</li>
+					<li>
+						<div class="slider-img">
+							<img src="images/bg5.jpg" class="img-responsive" alt="education">
+						</div>
+						<div class="slider-info">
+							<h3>Education</h3>
+							<p>The goal of education is the advancement of knowledge and the dissemination of truth.</p>
+						</div>
+					</li
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- //Slider -->
+</div>
+<!--main-content-->
+<div class="agile-main" id="about">
+	<div class="container">
+	<!--about-->
+		<div class="about">
+			<h2>about us</h2>
+			<h4>Our goal is connect people around the globe, to fulfill their dreams pursuing higher studies in the top universities of the world.</h4>
+			<img src="images/su.jpg" alt="sucess">
+			<p>"Nothing in this world can take the place of persistence. Talent will not: nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. Education will not: the world is full of educated derelicts. Persistence and determination alone are omnipotent- Calvin Coolidge". </p>
+		</div
+		<div class="clearfix"></div>
+	<!--//about-->
+	</div>
+</div>
+
+<!--welcome-->
+<div class="w3l-welcome">
+	<div class="container">
+		<div class=" agile-welcome">
+			<div class="text-w3">
+				<h4>welcome to our university finder</h4>
+			
+			</div>
+			<div class="grids">
+				<div class="grid">
+					<div class="icons">
+						<i class="fa fa-book" aria-hidden="true"></i>
+					</div>
+					<div class="text">
+						<h5>Online community, only for students</h5>
+						<p>A platform made for the young,optimists,passionate & dreamers!.</p>
+					</div>
+				</div>
+				<div class="grid">
+					<div class="icons">
+						<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+					</div>
+					<div class="text">
+						<h5>Find scholarship</h5>
+						<p> Know about the scholarship & waivers of different Universities </p>
+					</div>
+				</div>
+				<div class="grid">
+					<div class="icons">
+						<i class="fa fa-table" aria-hidden="true"></i>
+					</div>
+					<div class="text">
+						<h5>Subject wise info</h5>
+						<p>Hear from others and also let others know about your university!</p>
+					</div>
+				</div>
+				
+				<div class="grid">
+					<div class="icons">
+						<i class="fa fa-laptop" aria-hidden="true"></i>
+					</div>
+					<div class="text">
+						<h5>Enquire anytime</h5>
+						<p>Want to ask us something? Message us right now!</p>
+					</div>
+				</div>
+			</div>
+			<div class="w3-img">
+				<img src="images/man2.jpg" alt="image" />
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--//welcome-->
+
+<!--activities-->
+<div class="gallery" id="activities">
+	<div class="container">
+	  <div class="gallery-main">
+	  	<div class="gallery-top">
+	  		<h3>our activities</h3>
+	  	</div>
+		<div class="gallery-bott" >
+			
+				
+					<div class="col-md-4 col1 gallery-grid" id="id1">
+						<figure class="effect-bubba">
+							<img src="images/g1.jpg" alt="" >
+							
+							<figcaption>
+								<h4 class="gal" >Universities Information</h4>
+								
+								<p class="gal1">“Live as if you were to die tomorrow. Learn as if you were to live forever.” </p>	
+							</figcaption>			
+						</figure>
+					
+					</div>
+					<script type="text/javascript">
+						$('#id1').click(function(){
+							window.open('/unilist');
+							
+						});
+					</script>
+					<div class="col-md-4 col1 gallery-grid" id="id2">
+						
+						<figure class="effect-bubba">
+							<img  src="images/g2.jpg" alt="">
+							<figcaption>
+								<h4 class="gal" >Post about Your University</h4>
+							
+								<p class="gal1">“Live as if you were to die tomorrow. Learn as if you were to live forever.” </p>	
+							</figcaption>			
+						</figure>
+					
+					</div>
+					<script type="text/javascript">
+						$('#id2').click(function(){
+							
+							window.open('/university');
+						});
+					</script>
+					<div class="col-md-4 col1 gallery-grid" id="id3">
+						
+						<figure class="effect-bubba">
+							<img  src="images/g3.jpg" alt="">
+							<figcaption>
+								<h4 class="gal">Ask Questions</h4>
+								<p class="gal1">“Live as if you were to die tomorrow. Learn as if you were to live forever.” </p>	
+							</figcaption>			
+						</figure>
+						
+					</div>
+					<script type="text/javascript">
+						$('#id3').click(function(){
+							alert('i am clicked');
+						});
+					</script>
+				
+			     
+			     <div class="clearfix"> </div>
+			</div>
+				
+		</div>
+	</div>
+</div>
+
+<!--contact-->
+<div class="agile-contact" id="contact">
+	<div class="left-contact">
+
+			<h6>contact us</h6>
+			<ul>
+				<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+				<li><i class="fa fa-phone" aria-hidden="true"></i>+0176666666</li>
+				<li><i class="fa fa-map-marker" aria-hidden="true"></i>Bashundhora,Dhaka</li>
+			</ul>
+	
+	</div>
+	<div class="right-contact">
+		<div class="map">
+			<iframe src="https://www.google.com/maps/embed?pb" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+			<div class="messagebox">
+				<input placeholder="Name" name="Name" class="name" type="text" required="" id="name1"><br>
+				<input placeholder="E-mail" name="Name" class="name" type="text" required="" id="email1"><br>
+				<textarea placeholder="Message" id="message1"></textarea><br>
+				<button id="submit">Submit </button>
+					
+					<script type='text/javascript'>
+				
+					var newMessage={name:"",email:"",message:""};
+					$('#submit').click(function(){
+						newMessage.name=$('#name1').val();
+						newMessage.email=$('#email1').val();
+						newMessage.message=$('#message1').val();
+					
+						 $.ajax({
+		                    method: "POST",
+		                    url: "/api/messages",
+		                    data: newMessage
+		                }).done(function(response){
+		                    console.log(response);
+		                    alert("Message has been sent!");
+		                }).fail(function(response){
+		                    console.log(response.responseText);
+		                });
+					});
+				</script>
+				
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<!--//contact-->
+<!--//main-content-->
+
+<!--footer-->
+<div class="w3l-footer">
+	<div class="container">
+
+		<div class="right-social">
+			<i class="fa fa-facebook-square" aria-hidden="true"></i>
+			<i class="fa fa-twitter-square" aria-hidden="true"></i>
+			<i class="fa fa-google-plus-square" aria-hidden="true"></i>
+		</div>
+		<div class="clearfix"></div>
+		<div class="footer-nav">
+			<ul>
+				<li><a class="menu__link scroll" href="#home">home</a></li>
+				<li><a class="menu__link scroll" href="#about">about</a></li>
+				<li><a class="menu__link scroll" href="#contact">contact</a></li>
+			</ul>
+		</div>
+		<div class="copyright-agile">
+			<p>&copy; 2018 University Finder. All rights reserved | Design by Team Real</p>
+		</div>
+	</div>
+</div>
+<!--//footer-->
+<!-- smooth scrolling -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+		/*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear' 
+			};
+		*/								
+		$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+</body>
 </html>

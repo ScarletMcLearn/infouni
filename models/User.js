@@ -40,10 +40,6 @@ var UserSchema = new Schema({
         required: 'Last Name required'
       },
 
-    displayName: {
-        type: String,
-        trim: true
-    },
     email: {
         type: String,
         trim: true,
@@ -56,6 +52,12 @@ var UserSchema = new Schema({
         trim: true,
         required: 'User Name required'
     },
+    uniName: {
+        type: String,
+        trim: true,
+        
+    },
+    /*
     photo: {
         type: String,
         default: 'http://www.ee-ip.org/sites/default/files/default_images/default-user.png',
@@ -76,18 +78,26 @@ var UserSchema = new Schema({
         default: '',
         trim: true
     },
+    
+    displayName: {
+        type: String,
+        trim: true
+    },
+     
+    */
     password: {
         type: String,
         default: '',
         validate: [validateLocalStrategyPassword, 'Password should be longer'],
         required: 'Password required'
     },
-    salt: {
-        type: String
-    },
+   
     provider: {
         type: String,
         required: 'Provider is required'
+    },
+    salt: {
+        type: String
     },
     providerData: {},
     additionalProvidersData: {},

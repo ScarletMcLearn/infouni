@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>
+            Messages
+        </title>
+        <body>
+            <h2>Messagebox</h2>
+           
+            <% for(var i=0; i<messages.length; i++) { %>
+    <h3> <%= messages[i].name %> </h3>
+ <h3><%= messages[i].email%></h3>
+    <h3><%= messages[i].message  %></h3>
+     <% }%>
+        </body>
+    </head>
+</html>
