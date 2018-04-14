@@ -56,7 +56,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				        url: "/auth/signin",
 				        data: user
 				      }).done(function(response){
-				        console.log(response);
+				        alert('Login Successful!');
 				        window.location.replace('/');
 				      }).fail(function(response){
 				        console.log(response);

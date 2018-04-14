@@ -62,7 +62,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		                    url: "/auth/signup",
 		                    data: newUser
 		                }).done(function(response){
-		                    console.log(response);
+		                    
 		                    alert("Signed Up succesfully!");
 		                    window.location.replace('/');
 		                }).fail(function(response){
